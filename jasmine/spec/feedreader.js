@@ -27,9 +27,9 @@ $(function() {
          */
         it('all url defined', function() {
             for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].url).toBeDefined();
-                expect(typeof allFeeds[i].url).toBe('string');
-                expect($.trim(allFeeds[i].url)).not.toBe('');
+                expect(allFeeds[i].url).toBeDefined();// url是否存在
+                expect(typeof allFeeds[i].url).toBe('string');//url 是否为 string类型
+                expect($.trim(allFeeds[i].url)).not.toBe('');//url 是否为空
             }
         });
 
@@ -62,6 +62,7 @@ $(function() {
             // matrix 对象第4个下标代表向左位移的距离
             // 检测菜单是否已经关闭
             // body 有 menu-hidden class 且 菜单的左移距离等于菜单总宽度
+            // 菜单向左移出屏幕
             isMenuHidden = function() {
                 translateLeft = parseInt(sideMenu.css('transform').split(',')[4]);
                 return $body.hasClass('menu-hidden') && translateLeft === -sideMenu.outerWidth();
@@ -69,6 +70,7 @@ $(function() {
 
             // 检测菜单是否已经展示
             // body 没有 menu-hidden class 且 菜单左移为0
+            // 菜单显示在屏幕上
             isMenuShow = function() {
                 translateLeft = parseInt(sideMenu.css('transform').split(',')[4]);
                 return !$body.hasClass('menu-hidden') && translateLeft === 0
